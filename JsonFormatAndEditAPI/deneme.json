@@ -1,0 +1,58 @@
+{
+    "name": "Charles",
+    "surname": "Freck",
+    "age": 31,
+    "address": {
+        "city": "Anaheim",
+        "county": "Orange County",
+        "state": "California",
+        "coordinates": {
+            "ID": [[
+                    33,
+                    50,
+                    7.0548,
+                    "N"
+                ],[
+                    117,
+                    54,
+                    52.2180,
+                    "W"
+                ]
+            ]
+        }
+    },
+    "contact": [
+        {
+            "type": "telephone",
+            "number": "25052006"
+        },
+        {
+            "type": "e-mail",
+            "name": "ascanner@darkly.com"
+        },
+        {
+            "type": [
+                {
+                    "account": "facebook",
+                    "url": "https://facebook.com/charles.freck",
+                    "official": false
+                },
+                {
+                    "account": "twitter",
+                    "url": "https://twitter.com/charles.freck",
+                    "official": true
+                },
+                {
+                    "account": "instagram",
+                    "url": "https://instagram.com/charles.freck",
+                    "official": false
+                },
+                {
+                    "account": "linkedin",
+                    "url": null,
+                    "official": null
+                }
+            ]
+        }
+    ]
+}

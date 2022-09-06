@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/lib/textEditor/textEditor.css" />
+
+
+
+<nav class="navbar navbar-expand-lg bg-light" style="margin-bottom:20px;">
+    <div class="container-fluid ">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown" style="justify-content:center;">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <select class="form-select" id="navbar-select" aria-label="Default select example">
+                        <option selected>Choose Project</option>
+                    </select>
+                </li>
+                <li class="nav-item">
+                    <div class="d-flex" role="search">
+                        <input id="jsonEditor-searchJsonInput" class="form-control me-2" type="search" placeholder="Enter json url" aria-label="Search">
+                        <button id="jsonEditor-searchJsonBtn" class="btn btn-outline-success">Search</button>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="jsonEditor-saveJson" href="">Save</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("LogOut", "Account")">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <div class="jsonFormBox">
+        <div class="jsonForm">
+
+        </div>
+
+
+    </div>
+    
+    <div class="">
+        <div id="backdrop">
+            <div id="text">
+
+            </div>
+            <textarea id="text-area" spellcheck="false"></textarea>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/textEditor/textEditor.js"></script>
+<script>
+    textEditor.init();
+
+    var selectListUrl = window.location.href + 'get-select-list';
+
+    $.ajax({
+        url: selectListUrl,
+        type: "GET",
+        dataType: "json",
+        success: function (response) {
+            if (response != null) {
+
+                for (var i = 0; i < response.length; i++) {
+                    $('#navbar-select').append('<option value="' + response[i].name + '">' + response[i].name + '</option>')
+                }
+            }
+        },
+        error: function (response) {
+            alert('Error occurred!');
+        }
+
+    });
+
+    $('#jsonEditor-searchJsonBtn').on('click', function (e) {
+
+        var dataToPost = { path: $('#jsonEditor-searchJsonInput').val(), webSiteName: $("#navbar-select").find(':selected').val() };
+
+        var url = window.location.href + 'find-json';
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            dataType: "json",
+            data: dataToPost,
+            success: function (response) {
+                if (response && response.data && response.success) {
+
+                    $('#text-area').val(response.data);
+
+                    textEditor.organizeText(e, $('#text-area').val());
+                }
+            },
+            error: function (response) {
+                alert('Error occurred!');
+            }
+
+        });
+    });
+
+    $('#jsonEditor-saveJson').on('click', function (e) {
+        var dataToPost = { path: $('#jsonEditor-searchJsonInput').val(), data: $('.jsonForm').html(), webSiteName: $("#navbar-select").find(':selected').val() };
+
+        var url = window.location.href + 'save-json';
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            dataType: "json",
+            data: dataToPost,
+            success: function (response) {
+                alert('Mission Complated !');
+            },
+            error: function (response) {
+                alert('Error occurred !');
+            }
+
+        });
+    });
+
+
+</script>

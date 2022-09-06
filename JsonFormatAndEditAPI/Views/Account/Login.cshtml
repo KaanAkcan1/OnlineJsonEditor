@@ -1,0 +1,22 @@
+@model OnlineJsonEditor.Models.Account.Login;
+<div class="containerbox">
+    <div class="p-5 wrap-login">
+        <span class="login-title">
+            Account Login
+        </span>
+
+        <form class="login-form" method="post" id="frmlogin">
+            <div class="mb-3 wrap-login-input">
+                <input asp-for="Email" type="email" class="form-control login-input" id="Email" aria-describedby="emailHelp" placeholder="Email Address">
+            </div>
+            <div class="mb-3 wrap-login-input">
+                <input asp-for="Password" type="password" class="form-control login-input" id="Password" placeholder="Password">
+            </div>
+            <div class="wrap-button">
+                <button type="submit" class="btn btn-primary btn-login">Submit</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

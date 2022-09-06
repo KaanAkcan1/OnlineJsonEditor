@@ -1,0 +1,106 @@
+:root {
+    --orange: #F5BBBA;
+    --gray: #E1E1E1;
+    --purple: #EABFF4;
+    --green: #C1F4D7;
+    --greenText: #61A071;
+    --grayText: #303B41;
+    --yellow: #F5F1B9;
+    --blue: #0061A2;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--blue);
+}
+
+.container, #backdrop, #text-area, #text {
+    width: 1000px;
+    height: 100%;
+    min-height: 500px;
+}
+
+#text-area {
+    padding: 10px;
+    font: 12px/18px 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+}
+
+#text {
+    padding: 12px;
+    font: 12px/18px 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+}
+
+#text-area {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    border: 2px solid #74637f;
+    border-radius: 0;
+    color: transparent;
+    background-color: transparent;
+    resize: none;
+    transition: transform 1s;
+    pointer-events: auto;
+    caret-color: #444;
+    text-decoration: none;
+}
+
+    #text-area:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #c6aada;
+    }
+
+mark.property {
+    border-radius: 3px;
+    border: none;
+    color: var(--greenText);
+    padding: 0px;
+    background: none;
+}
+
+mark.string {
+    border-radius: 3px;
+    border: none;
+    background: none;
+    color: darkred;
+    padding: 0px;
+}
+
+#text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--grayText);
+    position: absolute;
+    text-decoration: none;
+}
+
+#backdrop {
+    position: absolute;
+    z-index: 1;
+    border: 2px solid #685972;
+    background-color: #fff;
+    overflow: hidden;
+    pointer-events: none;
+    transition: transform 1s;
+}
+
+.jsonFormBox {
+    background-color: #f3f7fa;
+    padding: 10px;
+    font: 12px/18px 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    border: 2px solid #685972;
+    margin-bottom: 10px;
+    overflow: hidden;
+    min-height: 100px;
+    width: 1000px;
+}
+#jsonEditor-searchJsonInput{
+    width:1350px;
+}
